@@ -1,7 +1,8 @@
-import React from "react";
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import RowText from "../components/RowText";
+import React from 'react'
+import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { Feather } from '@expo/vector-icons'
+import RowText from '../components/RowText'
+import { weatherType } from '../utils/weatherType'
 
 const CurrentWeather = () => {
   const {
@@ -14,7 +15,7 @@ const CurrentWeather = () => {
     bodyWrapper,
     description,
     message,
-  } = styles;
+  } = styles
   return (
     <SafeAreaView style={wrapper}>
       <View style={container}>
@@ -22,52 +23,52 @@ const CurrentWeather = () => {
         <Text style={temp}>6</Text>
         <Text style={feels}>Feels like 5</Text>
         <RowText
-          messageOne={"High: 8"}
-          messageTwo={"Low: 6"}
+          messageOne={'High: 8'}
+          messageTwo={'Low: 6'}
           containerStyles={highLowWrapper}
           messageOneStyles={highLow}
           messageTwoStyles={highLow}
         />
       </View>
       <RowText
-        messageOne={"Its Sunny"}
-        messageTwo={"Its perfect t-shirt weather"}
+        messageOne={'Its Sunny'}
+        messageTwo={weatherType['Thunderstorm'].message}
         containerStyles={bodyWrapper}
         messageOneStyles={description}
         messageTwoStyles={message}
       />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: 'pink',
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   temp: {
-    color: "black",
+    color: 'black',
     fontSize: 48,
   },
   feels: {
-    color: "black",
+    color: 'black',
     fontSize: 30,
   },
   highLow: {
-    color: "black",
+    color: 'black',
     fontSize: 20,
   },
   highLowWrapper: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   bodyWrapper: {
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
     paddingLeft: 25,
     marginBottom: 40,
   },
@@ -77,6 +78,6 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 30,
   },
-});
+})
 
-export default CurrentWeather;
+export default CurrentWeather
