@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from './src/components/Tabs'
 import { ActivityIndicator, View, StyleSheet } from 'react-native'
-import * as Location from 'expo-location'
-
-//api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+import { useGetWeather } from './src/hooks/useGetWeather'
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
-  const [location, setLocation] = useState(null)
-  const [error, setError] = useState(null)
-  useEffect(() => {
-    ;(async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        setError('Permission to access location was denied')
-        return
-      }
-      let location = await Location.getCurrentPositionAsync({})
-      setLocation(location)
-    })()
-  }, [])
+  const [loading, error, weather] = useGetWeather()
 
-  if (location) {
-    console.log(location)
+  if (weather && weather.list) {
+    return (
+      <NavigationContainer>
+        <Tabs weather={weather} />
+      </NavigationContainer>
+    )
   }
-
   if (loading) {
     return (
       <View style={styles.container}>
@@ -33,11 +21,6 @@ const App = () => {
       </View>
     )
   }
-  return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
-  )
 }
 
 const styles = StyleSheet.create({
