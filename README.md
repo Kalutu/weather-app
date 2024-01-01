@@ -1,6 +1,6 @@
 # Weather App
 
-This mobile application provides users with real-time weather information, including the current weather, upcoming forecasts, and details for specific cities. Built with React Native, it offers a cross-platform solution for both iOS and Android devices.
+This is a mobile application that provides users with real-time weather information, including the current weather, upcoming forecasts, and details for specific cities. Built with React Native, it offers a cross-platform solution for both iOS and Android devices.
 
 ## Features
 
